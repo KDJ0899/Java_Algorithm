@@ -104,20 +104,20 @@ public class KakaoTest_2018_candidateKey {
 	
 	}
 	
-    public int RealSolution(String[][] relation) {// �젙�떟吏� 
-        int n = relation.length;        // n媛쒖쓽 �뜲�씠�꽣
-        int m = relation[0].length;     // m媛쒖쓽 而щ읆
+    public int RealSolution(String[][] relation) {
+        int n = relation.length;       
+        int m = relation[0].length;     
         ArrayList<Integer> list = new ArrayList<Integer>();
 
-        // �셿�쟾 �깘�깋�쓣 �룉�떎.
+        
         for(int i=1; i<(1<<m); i++) {
             Set<String> s = new HashSet<String>();
-            // n媛쒖쓽 �뜲�씠�꽣
+            
             for(int j=0; j<n; j++) {
                 String now = "";
-                // m媛쒖쓽 而щ읆
+                
                 for(int k=0; k<m; k++) {
-                    // 紐⑤뱺 寃쎌슦�쓽 �닔 & �빐�떦 �씪�씤 �뜲�씠�꽣 議고빀.
+                    
                     if( (i&(1<<k)) > 0 ) {
                         now+=relation[j][k];
                     }
@@ -131,7 +131,7 @@ public class KakaoTest_2018_candidateKey {
     }
     public static boolean possi(ArrayList<Integer> list, int now) {
         for(int i=0; i<list.size(); i++) {
-            // 媛숈쑝硫� 理쒖냼�꽦�쓣 留뚯”�븯吏� 紐삵븿.
+            
             if((list.get(i)&now)==list.get(i)) {
                 return false;
             }
