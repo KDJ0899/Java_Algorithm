@@ -1,10 +1,5 @@
 package Programmers;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 /**
  * 
   * @FileName : integerTriangle.java
@@ -13,39 +8,32 @@ import java.util.List;
   * @Author : Kim DongJin
   * @Comment :
  */
-public class integerTriangle {
-	static int max=0;
-	public static int solution(int[][] triangle) {
-		
-		List<Node> sums=new ArrayList<Node>();
-		sums.add(new Node(triangle[0][0],0));
-        sums=DP(triangle,sums,1);
-        
-        Collections.sort(sums, new Comparator<Node>() {
 
-			@Override
-			public int compare(Node o1, Node o2) {
-				return o2.sum-o1.sum;
-			}
-		});
-        return sums.get(0).sum;
+public class integerTriangle {
+	 static int n, m;
+	 static int data[][];
+	 static int numbers[][];
+
+    public static int solution(int[][] triangle) {
+        n = triangle.length;
+        m = triangle[n-1].length;
+        data = new int[n][m];
+        numbers = triangle;
+        for(int i=0; i<data.length; i++) {
+            for(int j=0; j<data[0].length; j++) {
+                data[i][j] = -1;
+            }
+        }
+        return maxLR(0, 0);
     }
-	
-	public static List<Node> DP(int[][] triangle,List<Node> sums,int i) {
-		if(triangle.length==i) {
-			return sums;
-		}
-		List<Node> newSums=new ArrayList<Node>();
-		Node node;
-		for(int a=0; a<sums.size(); a++) {
-			node=sums.get(a);
-			newSums.add(new Node(node.sum+triangle[i][node.j],node.j));
-			newSums.add(new Node(node.sum+triangle[i][node.j+1],node.j+1));
-		}
-		return DP(triangle,newSums,i+1);
-	
-	}
-	
+
+    public static int maxLR(int n, int i) {
+        if(n == m-1) {return numbers[n][i];}
+        else if(data[n][i] != -1) {return data[n][i];}
+        else {
+            return data[n][i] = numbers[n][i] + Math.max(maxLR(n+1, i), maxLR(n+1, i+1));
+        }
+    }
 	
 	public static void main(String[] args) {
 		
@@ -54,12 +42,3 @@ public class integerTriangle {
 
 }
 
-class Node{
-	int sum;
-	int j;
-	
-	public Node(int sum,int j ) {
-		this.sum=sum;
-		this.j=j;
-	}
-}
