@@ -1,12 +1,14 @@
 package Programmers;
+
 /**
  * 
   * @FileName : truckPassingBridge.java
   * @Project : Algorithm
   * @Date : 2019. 3. 12. 
   * @Author : Kim DongJin
-  * @Comment : ÇÁ·Î±×·¡¸Ó½º ´Ù¸®¸¦ Áö³ª´Â Æ®·° ¹®Á¦
+  * @Comment : í”„ë¡œê·¸ëž˜ë¨¸ìŠ¤ ë‹¤ë¦¬ë¥¼ ì§€ë‚˜ëŠ” íŠ¸ëŸ­ ë¬¸ì œ
  */
+
 public class truckPassingBridge {
 
 	static public int solution(int bridge_length, int weight, int[] truck_weights) {
