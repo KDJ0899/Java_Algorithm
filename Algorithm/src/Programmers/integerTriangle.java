@@ -6,7 +6,7 @@ package Programmers;
   * @Project : Algorithm
   * @Date : 2019. 3. 25. 
   * @Author : Kim DongJin
-  * @Comment :
+  * @Comment :프로그래머스 동적계획법 정수삼각형 문제 (하향식 접근, 메모이 제이션)
  */
 
 public class integerTriangle {
