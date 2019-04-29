@@ -59,13 +59,10 @@ public class MultiThreadChatClient implements Runnable {
 			try {
 
 				/* Create a thread to read from the server. */
-				System.out.println("tt");
 				new Thread(new MultiThreadChatClient()).start();
-				System.out.println("tt");
 				while (!closed) {
 					os.println(inputLine.readLine().trim());
 				}
-				System.out.println("tt");
 				/*
 				 * Close the output stream, close the input stream, close the
 				 * socket.
