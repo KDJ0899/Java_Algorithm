@@ -15,7 +15,7 @@ import java.util.Set;
   * @Project : Algorithm
   * @Date : 2019. 7. 9. 
   * @Author : Kim DongJin
-  * @Comment : Samsung Expert Academy 7701. 염라대왕의 이름 정렬 문제 풀이
+  * @Comment : Samsung Expert Academy 7701. D4 염라대왕의 이름 정렬 문제 풀이 
  */
 public class nameSorting {
 
