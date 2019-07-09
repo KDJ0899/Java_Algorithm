@@ -10,7 +10,7 @@ import java.util.Scanner;
   * @Project : Algorithm
   * @Date : 2019. 7. 9. 
   * @Author : Kim DongJin
-  * @Comment :
+  * @Comment : SamsungExpertAcademy View문제 풀이
  */
 public class view {
 
