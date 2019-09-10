@@ -33,6 +33,7 @@ public class Curcular_pime {
 			if(prime==1) {
 				System.out.print(num+" ");
 				line++;
+				
 			}
 			if(line==10) {
 				System.out.println();
