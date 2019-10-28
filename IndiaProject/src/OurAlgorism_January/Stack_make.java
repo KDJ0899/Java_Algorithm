@@ -2,7 +2,7 @@ package OurAlgorism_January;
 
 import java.util.Scanner;
 /**
- * 胶琶父甸扁(1.29~2.4 老林老苞力)
+ * 鞀ろ儩 甑槃頃橁赴
  * 
  * @Package : OurAlgorism_January
  * @FileName : Stack_make.java

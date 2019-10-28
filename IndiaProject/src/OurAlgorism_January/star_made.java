@@ -2,7 +2,7 @@ package OurAlgorism_January;
 import java.util.Scanner;
 
 /**
- * *·Î »ç¹æ¸é »ï°¢Çü ¸¸µé±â
+ * ë³„ëª¨ì–‘ìœ¼ë¡œ ì°ê¸°
  * 
  * @Package : OurAlgorism_January
  * @FileName : star_made.java

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import OurAlgorism_January.Stack_make.Stack;
 /**
- * Å¥ ¸¸µé±â(1.29~2.4 ÀÏÁÖÀÏ°úÁ¦)
+ * í êµ¬í˜„í•˜ê¸°
  * 
  * @Package : OurAlgorism_January
  * @FileName : Queue_make.java

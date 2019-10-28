@@ -2,10 +2,10 @@ package OurAlgorism_October;
 
 public class a_la_russe {
 /**
- * a la russe ¾Ë°í¸®Áò(°öÇÏ±â ¾Ë°í¸®Áò)
+ * a la russe ì•Œê³ ë¦¬ì¦˜(ê³±í•˜ê¸° ì•Œê³ ë¦¬ì¦˜)
  * 
- * °öÇÏ±â ±âÈ£¸¦ »ç¿ëÇÏÁö ¾Ê°í °ö¼ÀÀ» ÇÏ´Â ¹æ¹ýÀÌ ±Ã±ÝÇØÁ®¼­ Ã£¾Æº½
- * for¹®À» »ç¿ëÇØ¼­ ÀÏÀÏÀÌ ´õÇÏ´Â °Íº¸´Ù ÈÎ¾À ºü¸¥ ¹æ¹ý
+ * ê³±í•˜ê¸° ê¸°í˜¸ë¥¼ ì‚¬ìš©í•˜ì§€ ì•Šê³  ê³±ì…ˆì„ í•˜ëŠ” ë°©ë²•ì´ ê¶ê¸ˆí•´ì ¸ì„œ ì°¾ì•„ë´„
+ * forë¬¸ì„ ì‚¬ìš©í•´ì„œ ì¼ì¼ì´ ë”í•˜ëŠ” ê²ƒë³´ë‹¤ í›¨ì”¬ ë¹ ë¥¸ ë°©ë²•
  *
  * @Method Name : main
  * @param args

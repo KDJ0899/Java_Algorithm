@@ -2,7 +2,7 @@ package OurAlgorism_January;
 
 import java.util.Scanner;
 /**
- * 18.01.27 AM 01:25 ÀÎµµ¿¡¼­ ÅÂÀÏÀÌÇü°ú deque±¸ÇöÇÏ±â. (baekjoon)
+ * 18.01.27 AM 01:25 ì¸ë„ì—ì„œ íƒœì¼ì´í˜•ê³¼ dequeêµ¬í˜„í•˜ê¸°. (baekjoon)
  * 
  * @Package : OurAlgorism_January
  * @FileName : deque_make.java

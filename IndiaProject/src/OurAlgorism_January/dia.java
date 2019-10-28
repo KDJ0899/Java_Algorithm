@@ -2,7 +2,7 @@ package OurAlgorism_January;
 import java.util.Scanner;
 
 /**
- * ´ÙÀÌ¾Æ¸óµå ¸¸µé±â
+ * ë‹¤ì´ì•„ëª¨ì–‘ìœ¼ë¡œ ë³„ ì°ê¸°
  * 
  * @Package : OurAlgorism_January
  * @FileName : dia.java
