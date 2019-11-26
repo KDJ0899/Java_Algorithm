@@ -8,7 +8,7 @@ import java.util.HashSet;
   * @Project : Algorithm
   * @Date : 2019. 11. 20.
   * @Author : Kim DongJin
-  * @Comment :2020카카오 자물세와 열쇠 문제 풀이 (진행중) 
+  * @Comment :2020카카오 자물쇠와 열쇠 문제 풀이 (진행중) 
  */
 public class LockAndKey {
 	
