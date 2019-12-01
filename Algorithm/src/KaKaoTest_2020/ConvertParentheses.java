@@ -1,6 +1,3 @@
-/**
- * 
- */
 package KaKaoTest_2020;
 
 /**
@@ -13,16 +10,17 @@ package KaKaoTest_2020;
 public class ConvertParentheses {
 
 
-	public static String solution(String p) {
+	public static String solution(String p) { 
         String u =p,v="";
         
-        if(p.equals(""))
+        if(p.equals("")) // 현재 단어가 없으면 빈칸으로 반환.
         	return "";
+        
         int postCount=0,preCount=0;
         boolean correct = true;
         char[] ch = p.toCharArray();
         
-        for(int i=0; i<ch.length; i++) {
+        for(int i=0; i<ch.length; i++) { //앞부분 u가 알맞은 괄호 인지 확인하고 u와 v를 나누는 과정.
         	if(ch[i]=='(') {
         		preCount++;
         	}
@@ -39,7 +37,7 @@ public class ConvertParentheses {
         	}
         }
         
-        if(!correct) {
+        if(!correct) { //u가 알맞은 괄호가 아닐시, 규칙에 따라 맞는 괄호로 변환 하는 과정.
         	String str="(";
         	str+=solution(v)+")";
         	
