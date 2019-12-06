@@ -52,10 +52,14 @@ public class PillarAndBeam {
         	
         	else {
         		if(build_frame[i][3]==0) {// 보를 생성하는가?
-        			
+        			if(y>0||structure.containsKey(x+" "+(y-1)+" "+0) //바닥보다 위인가?
+        					||structure.containsKey((x+1)+" "+(y-1)+" "+0)//보 끝에 기둥이 있는가?
+        					||(structure.containsKey((x-1)+" "+y+" "+1)&&structure.containsKey((x+1)+" "+y+" "+1 ))){//보 양쪽끝에 다른 보가 있는가?
+						structure.put(x+" "+y+" "+1, true);
+        			}
         		}
         		else {// 보를 제거하는가?
-        			
+        			//보 옆에 있는 보에 기둥이 있는가? 보 위에 기둥이 있지만 아래에 기둥이 있는가?
         		}
         	}
         }
