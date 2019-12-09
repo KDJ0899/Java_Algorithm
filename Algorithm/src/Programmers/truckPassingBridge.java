@@ -19,7 +19,7 @@ public class truckPassingBridge {
         
         for(int i=0; i<truck_weights.length; i++) {
         	nowWeight+=truck_weights[i];
-        	
+        		
         	if(nowWeight>weight) {
         		for(int j=front+1;j<front+nowNum; j++) {
         			nowTruckLocate[j]+=bridge_length-nowTruckLocate[front];
