@@ -6,7 +6,7 @@ package Programmers;
   * @Project : Algorithm
   * @Date : 2019. 12. 13. 
   * @Author : Kim DongJin
-  * @Comment : 프로그래머스 2*n 타일링 문제
+  * @Comment : 프로그래머스 2*n 타일링 문제!
  */
 public class Tiling {
 	
