@@ -6,42 +6,22 @@ package Programmers;
   * @Project : Algorithm
   * @Date : 2019. 12. 13. 
   * @Author : Kim DongJin
-  * @Comment : 프로그래머스 2*n 타일링 문제!
+  * @Comment : 프로그래머스 2*n 타일링 문제 (완료)
+  * 		DP문제 
  */
 public class Tiling {
 	
-
-	static int count;
 	 
 	public static int solution(int n) {
-	      int answer = 0;
-	      
-	      count = 0;
-	      int one;
-	      
-	      for(int i = n/2; i>=0; i--) {
-	    	  one = n-i*2;
-	    	  search(i, one);
+	      int[] arr = new int[n + 1];
+	      arr[1] = 1;
+	      arr[2] = 2;
+	      for(int i = 3; i < n + 1; i++){
+	          arr[i] = arr[i - 1] % 1000000007 + arr[i - 2] % 1000000007;
 	      }
-	      
-	      answer = count;
-	      
-	      return answer %1000000007;
+
+	      return arr[n] % 1000000007;
 	  }
-	
-	public static void search(int two , int one) {
-		System.out.println(two+"  "+one);
-		
-		if(two==0 || one ==0) {
-			count++;
-			return;
-		}
-		
-		search(two-1,one);
-		search(two, one-1);
-		
-		return;
-	}
 	
 
 	public static void main(String[] args) {
