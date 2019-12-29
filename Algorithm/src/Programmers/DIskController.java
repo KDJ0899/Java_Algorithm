@@ -18,20 +18,20 @@ public class DIskController {
 	 public int solution(int[][] jobs) {
 	        int answer = 0;
 	        
-	        Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
-	    	List<Integer> requestList = new ArrayList<Integer>();
+	        Map<Integer, List<Integer>> requestTimeList = new HashMap<Integer, List<Integer>>();
+	    	List<Integer> requestTimes = new ArrayList<Integer>();
 	    	List<Integer> list;
 	    	int requestTime;
 	        
 	        for(int i=0; i<jobs.length; i++) {
 	        	requestTime = jobs[i][0];
 	        	
-	        	if(map.containsKey(requestTime))
-	        		map.get(requestTime).add(jobs[i][1]);
+	        	if(requestTimeList.containsKey(requestTime))
+	        		requestTimeList.get(requestTime).add(jobs[i][1]);
 	        	else {
 	        		list = new ArrayList<Integer>();
 	        		list.add(jobs[i][1]);
-	        		map.put(requestTime, list);
+	        		requestTimeList.put(requestTime, list);
 	        	}
 	        }
 	        
@@ -40,8 +40,16 @@ public class DIskController {
 	    }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		List<Integer> list = new ArrayList<Integer>();
+		Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
+		
+		list.add(1);
+		
+		map.put(1,list);
+		
+		map.get(1).add(4);
+		
+		System.out.println(map.get(1).toString());
 	}
 
 }
