@@ -15,17 +15,17 @@ import java.util.HashMap;
 public class KakaoTest_2018_openTalk {
 	 public static String[] solution(String[] record) {
 	        String[] answer;
-	        String[] arr;
+	        String[] commands;
 	        
 	        ArrayList<String[]> list=new ArrayList<>();
 			HashMap map=new HashMap<>();
 			
 	        for(int i=0;i<record.length;i++) {
-	        	arr=record[i].split(" ");
-	        	if(!arr[0].equals("Change"))
-	        		list.add(arr);
-	        	if(!arr[0].equals("Leave"))
-	        		map.put(arr[1], arr[2]);
+	        	commands=record[i].split(" ");
+	        	if(!commands[0].equals("Change"))
+	        		list.add(commands);
+	        	if(!commands[0].equals("Leave"))
+	        		map.put(commands[1], commands[2]);
 	        }
 	        
 	        answer=new String[list.size()];
