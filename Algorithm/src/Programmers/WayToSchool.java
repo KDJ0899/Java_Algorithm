@@ -11,7 +11,7 @@ import java.util.Map;
   * @Project : Algorithm
   * @Date : 2019. 11. 30.
   * @Author : Kim DongJin
-  * @Comment :프로그래머스 동적계획법 - 등굣길 문제.
+  * @Comment :프로그래머스 동적계획법 - 등굣길 문제 (진행중)
  */
 public class WayToSchool {
 		
