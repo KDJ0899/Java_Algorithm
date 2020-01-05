@@ -6,7 +6,7 @@ package Programmers;
   * @Date : 2019. 12. 15. 
   * @Author : Kim DongJin
   * @Comment :프로그래머스 동적계획법(DP) 카드게임 문제
-  * 		아직 DP 많이 미숙함.
+  * 		
  */
 public class CardGame {
 	
