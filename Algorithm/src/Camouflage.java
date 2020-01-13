@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * 
@@ -7,12 +6,12 @@ import java.util.List;
   * @Project : Algorithm
   * @Date : 2020. 1. 12. 
   * @Author : Kim DongJin
-  * @Comment : 프로그래머스 해시 위장 문제 풀이
+  * @Comment : 프로그래머스 해시 위장 문제 풀이 완료
  */
 public class Camouflage {
 	
-	public int solution(String[][] clothes) {
-        int answer = 0;
+	public static int solution(String[][] clothes) {
+        int answer = 1;
         String type;
         
         HashMap<String, Integer> typeOfClothes = new HashMap<String, Integer>();
@@ -29,16 +28,17 @@ public class Camouflage {
         	
         }
         
-        for(String tmp : typeOfClothes.keySet()) {
-        	
-        	answer+=typeOfClothes.get(tmp);
-        	
-        }
-        return answer;
-    }
+       for(String key :typeOfClothes.keySet()) {
+    	   
+    	   answer *= (typeOfClothes.get(key)+1);
+       }
+        
+        return answer-1;
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		System.out.println(solution(new String[][] {{"y","h"},{"b","e"},{"g","h"}}));
+		System.out.println(solution(new String[][] {{"y","h"},{"b","h"},{"g","h"}}));
 
 	}
 
