@@ -1,4 +1,4 @@
-package CommonArgorithm;
+package commonArgorithm;
 
 public class a_la_russe {
 /**

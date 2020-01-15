@@ -1,4 +1,4 @@
-package CommonArgorithm;
+package commonArgorithm;
 import java.util.Scanner;
 
 /**

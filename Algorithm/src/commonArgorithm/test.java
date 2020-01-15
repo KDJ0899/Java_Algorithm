@@ -1,7 +1,7 @@
 /**
  * 
  */
-package CommonArgorithm;
+package commonArgorithm;
 
 import java.util.ArrayList;
 import java.util.List;
