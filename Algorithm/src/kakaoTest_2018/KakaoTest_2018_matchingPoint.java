@@ -1,4 +1,4 @@
-package KakaoTest_2018;
+package kakaoTest_2018;
 
 import java.util.ArrayList;
 import java.util.Collections;

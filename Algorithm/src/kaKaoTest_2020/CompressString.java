@@ -1,5 +1,5 @@
 
-package KaKaoTest_2020;
+package kaKaoTest_2020;
 
 /**
   * @FileName : compressString.java

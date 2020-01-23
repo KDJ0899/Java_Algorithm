@@ -1,7 +1,7 @@
 /**
  * 
  */
-package KaKaoTest_2020;
+package kaKaoTest_2020;
 
 import java.util.HashMap;
 import java.util.Map;
