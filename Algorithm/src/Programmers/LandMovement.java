@@ -1,5 +1,6 @@
 package Programmers;
 
+import java.util.Arrays;
 import java.util.List;
 /**
  * 
@@ -18,21 +19,22 @@ public class LandMovement {
         return answer;
     }
 	
-	public void explore(int[][] land, boolean[][] explored,List<int[]> group, int height, int i, int j) {
-		
-		if(i<0||i>land.length-1||j<0||j>land.length-1)
-			return;
-		if(explored[i][j])
-			return;
+	public void explore(int[][] land, boolean[][] explored,int[][] group, int height, int i, int j) {
 		
 		explored[i][j] = true;
-		group.add(new int[] {i,j});
-	
+		int nowHeight = land[i][j];
 		
-		
-		
-		
+		if(i-1>=0&&!explored[i-1][j]&&Math.abs(land[i-1][j]-nowHeight)<=height) {
+			group[i-1][j]=group[i][j];
+			explore(land, explored, group, height, i-1, j);
+		}
 		
 		return;
+	}
+	
+	
+	public static void main(String[] args) {
+
+		
 	}
 }
