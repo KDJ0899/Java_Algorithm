@@ -1,9 +1,6 @@
 package Programmers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 /**
@@ -12,8 +9,8 @@ import java.util.Queue;
   * @Project : Algorithm
   * @Date : 2020. 2. 10. 
   * @Author : Kim DongJin
-  * @Comment :프로그래머스 지형이동 문제.
- */
+  * @Comment :프로그래머스 지형이동 문제. 완료
+ */ 
 
 class Point {
 	int x;
@@ -27,11 +24,11 @@ class Point {
 	}
 	
 	public void move(int x, int y,int[][] land, boolean[][] explored, Queue<Point> group,PriorityQueue<Point> priorityQueue, int height) {
-		
 		int gap = Math.abs(land[this.x][this.y]-land[x][y]);
-		if(gap>height) {
+		if(gap<=height) {
 			diff = Math.min(gap, diff);
 			group.offer(new Point(x, y, 0));
+			explored[x][y] = true;
 			return;
 		}
 		
@@ -89,11 +86,16 @@ public class LandMovement {
         	point.right(land, explored, group, priorityQueue, height);
         	
         	if(group.isEmpty()) {
-        		point = priorityQueue.poll();
-        		if(point!=null) {
-        			answer+= point.diff;
-        			group.offer(point);
+        		while(!priorityQueue.isEmpty()) {
+	        		point = priorityQueue.poll();
+	        		if(!explored[point.x][point.y]) {
+	        			answer+= point.diff;
+	        			group.offer(point);
+	        			explored[point.x][point.y]=true;
+	        			break;
+	        		}
         		}
+        		
         	}
         }
         
@@ -101,6 +103,7 @@ public class LandMovement {
     }
 	
 	public static void main(String[] args) {
-
+		System.out.println(solution(new int[][] {{1, 4, 8, 10}, {5, 5, 5, 5}, {10, 10, 10, 10}, {10, 10, 10, 20}}, 3));
+		System.out.println(solution(new int[][] {{10, 11, 10, 11}, {2, 21, 20, 10}, {1, 20, 21, 11}, {2, 1, 2, 1}}, 1));
 	}
 }
