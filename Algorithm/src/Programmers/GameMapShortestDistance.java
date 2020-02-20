@@ -9,7 +9,7 @@ import java.util.Queue;
   * @Project : Algorithm
   * @Date : 2020. 2. 20. 
   * @Author : Kim DongJin
-  * @Comment : 프로그래머스 게임 맵 최단거리 문제 풀이 (정확성 테스트 통과, 효율성 테스트 불통과)
+  * @Comment : 프로그래머스 게임 맵 최단거리 문제 풀이 완료
  */
 
 class Player{
@@ -25,10 +25,11 @@ class Player{
 	
 	public void move(int x, int y, int distance, int[][]maps, int[][] distanceInfo,Queue<Player> nextSteps) {
 		
-		if(distanceInfo[y][x]!=0&&distanceInfo[y][x]<distance)
+		if(distanceInfo[y][x]!=0&&distanceInfo[y][x]<=distance)
 			return;
 		
 		distanceInfo[y][x] = distance;
+		
 		nextSteps.offer(new Player(x,y,distance));
 	}
 	
@@ -75,10 +76,13 @@ public class GameMapShortestDistance {
 			player = nextSteps.poll();
 			distance = player.distance;
 			
-			player.up(distance, maps, distanceInfo, nextSteps);
+			if(player.x==xMax-1&&player.y==yMax-1)
+				break;
+			
 			player.down(distance, maps, distanceInfo, nextSteps);
-			player.left(distance, maps, distanceInfo, nextSteps);
 			player.right(distance, maps, distanceInfo, nextSteps);
+			player.up(distance, maps, distanceInfo, nextSteps);
+			player.left(distance, maps, distanceInfo, nextSteps);
 		}
 
 		if(distanceInfo[yMax-1][xMax-1]==0)
