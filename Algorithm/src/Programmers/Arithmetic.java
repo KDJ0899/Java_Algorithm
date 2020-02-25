@@ -9,7 +9,7 @@ import java.util.List;
   * @Project : Algorithm
   * @Date : 2020. 2. 24. 
   * @Author : Kim DongJin
-  * @Comment : 프로그래머스 사칙연산 문제 풀이 (정확성 통과)
+  * @Comment : 프로그래머스 사칙연산 문제 풀이 (정확성 통과 , all + 문제 해결.)
  */
 public class Arithmetic {
 	static int answer = Integer.MIN_VALUE;
@@ -17,13 +17,33 @@ public class Arithmetic {
 		
 		List<String> operators = new ArrayList<String>();
 		List<Integer> numbers = new ArrayList<Integer>();
+		int num = Integer.parseInt(arr[0]);
 		
 		for(int i=0; i<arr.length/2; i++) {
-			numbers.add(Integer.parseInt(arr[i*2]));
-			operators.add(arr[i*2+1]);
+			
+			if(arr[i*2+1].equals("+")) {
+				num += Integer.parseInt(arr[i*2+2]);
+			}
+			else {
+				if(num!=0) {
+					numbers.add(num);
+					num = 0;
+					if(operators.size()!=0)
+						operators.add("+");
+				}
+				numbers.add(Integer.parseInt(arr[i*2+2]));
+				operators.add(arr[i*2+1]);
+			}
 		}
 		
-		numbers.add(Integer.parseInt(arr[arr.length-1]));
+		if(num!=0) {
+			numbers.add(num);
+			if(operators.size()!=0) {
+				operators.add("+");
+			}
+			else
+				answer=num;
+		}
 		
 		for(int i=0; i<operators.size(); i++) {
 			calculate(operators, numbers, i);
@@ -34,9 +54,6 @@ public class Arithmetic {
 	
 	public static void calculate(List<String> operators, List<Integer> numbers,int index) {
 		
-		System.out.println(operators.toString());
-        System.out.println(numbers.toString());
-        
 		int result;
 		List<String> newOperators = new ArrayList<String>();
 		newOperators.addAll(operators);
@@ -60,13 +77,14 @@ public class Arithmetic {
 		}
 		
 		if(newOperators.size()==0) {
-			System.out.println(newNumbers.get(0));
 			answer = Math.max(newNumbers.get(0), answer);
 		}
 	}
 
 	public static void main(String[] args) {
-		System.out.println(solution(new String[] {"1", "-", "3", "+", "5", "-", "8"}));
+		System.out.println(solution(new String[] {"1","-","5","-","8","-","4"}));
+		System.out.println(solution(new String[] {"4", "+", "5", "+", "6", "-", "5", "+", "4", "+", "2", "+", "1", "-", "5", "+", "6", "+", "7", "-", "8", "-", "4"}));
+		System.out.println(solution(new String[] {"4", "+", "5", "+", "6", "+", "5", "+", "4", "+", "2", "+", "1", "+", "5", "+", "6", "+", "7", "+", "8", "+", "4"}));
 		List<Integer> list = new ArrayList<Integer>();
 		
 
