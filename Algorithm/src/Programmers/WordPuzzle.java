@@ -1,6 +1,9 @@
 package Programmers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * 
@@ -11,69 +14,63 @@ import java.util.HashMap;
   * @Comment : 프로그래머스 단어 퍼즐 문제 풀이.
  */
 
-class WordTree {
-	public HashMap<Character, WordTree> next;
-	
-	public WordTree() {
-		next = new HashMap<Character, WordTree>();
-	}
-}
-
 public class WordPuzzle {
+	static int result;
 	
 	public static int solution(String[] strs, String t) {
-        int answer = 0;
-        WordTree root = new WordTree();
-        WordTree tmp;
-        char[] word;
-        char letter;
-        HashMap<Character, WordTree> tmpMap;
+        result = -1;
         
+        HashMap<Character, List<String>> wordBox = new HashMap<Character, List<String>>();
+        HashSet<String> words = new HashSet<String>();
+        char fisrtLetter;
+        List<String> list;
         for(int i=0; i<strs.length; i++) {
-        	word = strs[i].toCharArray();
-        	tmp = root;
-        	for(int j=0; j<word.length; j++) {
-        		letter = word[j];
-        		tmpMap = tmp.next;
-        		if(!tmpMap.containsKey(letter))
-        			tmpMap.put(letter, new WordTree());
-        		
-        		tmp = tmpMap.get(letter);
+        	if(t.contains(strs[i])) {
+	        	words.add(strs[i]);
+	        	fisrtLetter = strs[i].charAt(0);
+	        	
+	        	if(wordBox.containsKey(fisrtLetter)) 
+	        		wordBox.get(fisrtLetter).add(strs[i]);
+	        	else {
+	        		list = new ArrayList<String>();
+	        		list.add(strs[i]);
+	        		wordBox.put(fisrtLetter,list);
+	        	}
         	}
-        }
-        
-        word = t.toCharArray();
-        tmp =root;
-        
-        for(int i=0; i<word.length; i++) {
-        	letter = word[i];
-        	tmpMap = tmp.next;
         	
-        	if(tmpMap.containsKey(letter)) {
-        		tmp = tmpMap.get(letter);
-        	}
-        	else {
-        		if(tmp.equals(root)) {
-        			answer = -1;
-        			break;
-        		}
-        		
-        		tmp = root;
-        		answer++;
-        		i--;
-        	}
         }
-        
-        if(answer!=-1)
-        	answer++;
-        	
-        return answer;
+        serachBestAnswer(t, 0, wordBox,words);
+        return result;
     }
+	
+	public static void serachBestAnswer(String remainWord,int answer,HashMap<Character, List<String>> wordBox,HashSet<String> words) {
+		if(words.contains(remainWord)) {
+			answer++;
+			if(result==-1||result>answer)
+				result = answer;
+			return;
+		}
+		char firstLetter = remainWord.charAt(0);
+		String word;
+		List<String> list;
+		
+		if(wordBox.containsKey(firstLetter)) {
+			list = wordBox.get(firstLetter);
+			
+			for(int i=0; i<list.size(); i++) {
+				word = list.get(i);
+				if(remainWord.startsWith(word)) {
+					serachBestAnswer(remainWord.substring(word.length()), answer+1, wordBox, words);
+				}
+			}
+		}
+	}
 
 	public static void main(String[] args) {
-		
+		System.out.println("baba".contains("aba"));
 		System.out.println(solution(new String[] {"ba","na","n","a"}, "banana"));
-
+		System.out.println(solution(new String[] {"app","ap","p","l","e","ple","pp"}, "apple"));
+		System.out.println(solution(new String[] {"ba","an","nan","ban","n"}, "banana"));
 	}
 
 }
