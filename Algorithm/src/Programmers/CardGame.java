@@ -1,4 +1,8 @@
 package Programmers;
+
+import java.util.Arrays;
+import java.util.HashMap;
+
 /**
  * 
   * @FileName : CardGame.java
@@ -9,6 +13,11 @@ package Programmers;
   * 		
  */
 public class CardGame {
+	
+
+	static HashMap<String, Integer> sumMap;
+	static HashMap<Integer, Integer> target;
+	
 	
 	public static int solution(int[] left, int[] right)
     {
@@ -28,6 +37,73 @@ public class CardGame {
 
         return dp[left.length][right.length];
     }
+	
+	 public static int mySolution(int[] left, int[] right) {
+	        int answer = 0;
+	        
+	        int[] ArrL = left.clone();
+	        int[] ArrR = right.clone();
+	        
+	        int length = left.length;
+	        int MaxL,MaxR;
+	        sumMap = new HashMap<String, Integer>();
+	        target = new HashMap<Integer, Integer>();
+	        
+	        Arrays.sort(ArrL);
+	     
+	        Arrays.sort(ArrR);
+	        
+	        MaxL = ArrL[length-1];
+	        MaxR = ArrR[length-1];
+	        
+	        if(MaxL>MaxR) {
+	        	for(int i=0; i<length; i++) {
+	        		answer+= right[i];
+	        	}
+	        }
+	        else {
+	        	answer=game(left, right, 0, 0, 0);
+	        }
+	        
+	        
+	        
+	        return answer;
+	    }
+	 
+	 public static int game(int[] left,int[] right,int indexL,int indexR,int sum ) {
+		 
+		
+		 if(indexL==left.length)
+			 return sum;
+		 
+		 if(indexR == right.length) {
+			 return sum;
+		 }
+		 
+		 int startL = indexL,startR = indexR;
+		 
+		 if(target.containsKey(startL)&&startR>target.get(startL)) {
+			 return sumMap.get(startL+" "+target.get(startL));
+		 }
+		 
+		 
+		 while(left[indexL]>right[indexR]){
+			 
+			 sum += right[indexR];
+			 
+			 indexR++;
+			 
+			 if(indexR==right.length) {
+				 sumMap.put(startL+" "+startR, sum);			 
+				 target.put(startL, startR);
+				
+				 return sum;
+			 }
+			 
+		 }
+		 
+		 return Math.max( game(left, right, indexL+1, indexR+1, sum), game(left, right, indexL+1, indexR, sum));
+	 }
 
 	public static void main(String[] args) {
 		
