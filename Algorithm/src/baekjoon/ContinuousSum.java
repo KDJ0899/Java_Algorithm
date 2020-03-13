@@ -9,7 +9,7 @@ import java.util.Scanner;
   * @Project : Algorithm
   * @Date : 2020. 3. 13. 
   * @Author : Kim DongJin
-  * @Comment :백준 DP 연속합 문제 풀이.
+  * @Comment :백준 DP 연속합 문제 풀이 완료
  */
 public class ContinuousSum {
 
@@ -19,37 +19,30 @@ public class ContinuousSum {
 		
 		int n = sc.nextInt();
 		int[] numbers = new int[n];
-		int[] copy;
-		int[] dp = new int[n];
 		int max = -1001,sum =0;
 		
 		for(int i=0; i<n; i++) {
-			numbers[i] = sc.nextInt();
-		}
-		copy = numbers.clone();
-		
-		Arrays.sort(copy);
-		if(copy[n-1]<=0)
-			System.out.println(copy[n-1]);
-		else {	
-			for(int i=0; i<n; i++) {
-				if(sum+numbers[i]<0) {
-					max = Math.max(sum, max);
-					sum=0;
-				}
-				else {
-					if (numbers[i]<0) {
-						max = Math.max(sum, max);
-					}
-					sum+=numbers[i];
-				}
-	
-			}
-		
-			max = Math.max(sum, max);
 			
-			System.out.println(max);
+			numbers[i] = sc.nextInt();
+			
+			if(sum+numbers[i]<0) {
+				max = Math.max(sum, max);
+				sum=0;
+			}
+			else {
+				if (numbers[i]<0) {
+					max = Math.max(sum, max);
+				}
+				sum+=numbers[i];
+			}
+			max = Math.max(sum, max);
 		}
+		
+		if(max ==0) {
+			Arrays.sort(numbers);
+			max = numbers[n-1];
+		}
+		System.out.println(max);
 		sc.close();
 	}
 
