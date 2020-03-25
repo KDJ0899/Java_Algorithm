@@ -11,7 +11,7 @@ import java.util.Arrays;
   * @Project : Algorithm
   * @Date : 2020. 3. 25. 
   * @Author : Kim DongJin
-  * @Comment : 프로그래머스 동적계획법 도둑질 문제
+  * @Comment : 프로그래머스 동적계획법 도둑질 문제 풀이 완료.
  */
 public class Stealing {
 	public static void main(String[] args) {
@@ -64,13 +64,10 @@ public class Stealing {
         dp2[1]=money[1];
         for(int i=2;i<length-1;i++){
             dp[i]=Math.max(dp[i-2]+money[i],dp[i-1]);
-        }
-        for(int i=2;i<length;i++){
             dp2[i]=Math.max(dp2[i-2]+money[i],dp2[i-1]);
         }
-        System.out.println(Arrays.toString(dp));
-        System.out.println(Arrays.toString(dp2));
         
+        dp2[length-1]=Math.max(dp2[length-3]+money[length-1],dp2[length-2]);
         return Math.max(dp[length-2],dp2[length-1]);
     }
 	
