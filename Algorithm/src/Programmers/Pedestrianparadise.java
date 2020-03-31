@@ -24,15 +24,15 @@ public class Pedestrianparadise {
 		if(cityMap[y][x] == 1) return 0;
 		if(M==y&&N==x) return 1;
 		if(cityMap[y][x]==2) {
-			driveMap[y][x] = direction.move(x, y, cityMap, driveMap);
+			driveMap[y][x] = direction.move(x, y, cityMap, driveMap)%MOD;
 		}
 		else {
 			if(driveMap[y][x] !=0&& cityMap[y][x]==0) return driveMap[y][x];
-			driveMap[y][x]+= Direction.DOWN.move(x, y, cityMap, driveMap);
-			driveMap[y][x]+= Direction.RIGHT.move(x, y, cityMap, driveMap);
+			driveMap[y][x]+= Direction.DOWN.move(x, y, cityMap, driveMap)%MOD;
+			driveMap[y][x]+= Direction.RIGHT.move(x, y, cityMap, driveMap)%MOD;
 		}
 		
-		return driveMap[y][x];
+		return driveMap[y][x]%MOD;
 	}
 	
 	enum Direction{
@@ -42,7 +42,7 @@ public class Pedestrianparadise {
 				if(y+1>M)
 					return 0;
 				int result = drive(x, y+1, cityMap, driveMap, Direction.DOWN);
-				return result;
+				return result%MOD;
 			}
 		},
 		RIGHT{
@@ -51,11 +51,17 @@ public class Pedestrianparadise {
 				if(x+1>N)
 					return 0;
 				int result = drive(x+1, y, cityMap, driveMap, Direction.RIGHT);
-				return result;
+				return result%MOD;
 			}
 		};
 		
 		public abstract int move(int x,int y,int[][] cityMap,int[][] driveMap);
 	}
-
-}
+	
+	public static void main(String[] args) {
+		System.out.println(solution(3, 6, new int[][] { {0, 2, 0, 0, 0, 2},
+												        {0, 0, 2, 0, 1, 0},
+												        {1, 1, 0, 2, 2, 0}}));
+		}
+		
+	}
