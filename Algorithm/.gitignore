@@ -1,3 +1,4 @@
-/bin/
-src/coding_test/**
-src/programmers_skill_test/**
+Algorithm/bin/
+Algorithm/src/coding_test/**
+Algorithm/src/programmers_skill_test/**
+.idea/**

@@ -1,1 +1,4 @@
-/.metadata/
+Algorithm/bin/
+Algorithm/src/coding_test/**
+Algorithm/src/programmers_skill_test/**
+.idea/**
