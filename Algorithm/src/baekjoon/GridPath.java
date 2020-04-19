@@ -1,5 +1,6 @@
 package baekjoon;
 
+import java.util.Arrays;
 import java.util.Scanner;
 /**
  * 
@@ -32,8 +33,10 @@ public class GridPath {
 			}
 			passed = false;
 		}
-		System.out.println(x+" "+y);
 		System.out.println(walk(road, 0, 0, passed));
+		for(int i=0; i<N; i++) {
+			System.out.println(Arrays.toString(road[i]));
+		}
 	}
 	
 	public static int walk(int[][] road, int i,int j,boolean passed) {
