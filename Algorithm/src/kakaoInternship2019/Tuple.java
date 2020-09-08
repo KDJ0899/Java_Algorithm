@@ -15,7 +15,7 @@ import java.util.Map.Entry;
   * @Project : Algorithm
   * @Date : 2020. 9. 8. 
   * @Author : Kim DongJin
-  * @Comment :
+  * @Comment : 2019 카카오 겨울 인턴십 튜플 문제 풀이 완료.
  */
 public class Tuple {
 
