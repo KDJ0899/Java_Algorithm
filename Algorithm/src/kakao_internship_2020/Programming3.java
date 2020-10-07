@@ -1,114 +1,65 @@
 package kakao_internship_2020;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 /**
  * 
   * @FileName : Programming3.java
   * @Project : Algorithm
-  * @Date : 2020. 5. 23. 
+  * @Date : 2020. 10. 07
   * @Author : Kim DongJin
-  * @Comment : 진열장, 모든 보석을 사는 조건에서 최소 갯수 구하기. 투포인터
+  * @Comment : 카카오 인턴십 2020 보석쇼핑 문제, 모든 보석을 사는 조건에서 최소 갯수 구하기. 투포인터
  */
 public class Programming3 {
 	
 	public static int[] solution(String[] gems) {
-        int[] answer = {};
-        
-        Map<String, Queue<Integer>> gemBox = new HashMap<String, Queue<Integer>>();
-        Map<String, Integer> nowGemBox = new HashMap<String, Integer>();
-        String gem;
-        int gemNum , x = 0, y;
-        
-        for(int i=0; i<gems.length; i++) {
-        	gem = gems[i];
-        	
-        	if(!gemBox.containsKey(gem))
-        		gemBox.put(gem, new LinkedList<Integer>());
-        	
-        	gemBox.get(gem).add(i);
-        }
-        
-        if(gemBox.size() ==1 )
-        	answer = new int[] {1,1};
-        
-        else {
-        	for(int i=gemBox.size(); i<gems.length; i++) {
-        		for(int j=0; j< gems.length - i; j++) {
-        			
-        		}
-        	}
-        }
-        
-        return answer;
-    }
-	
-	public static int[] solution2(String[] gems) {
-		int[] answer = {-1, -1};
-		Set<String> gemType = new HashSet<String>();
-		Map<String,Integer> gemBox = new HashMap<String, Integer>();
-        String gem;
-        int x = 0, y = 0;
-        
-        for(int i=0; i<gems.length; i++) {
-        	gem = gems[i];
-        	
-        	gemType.add(gem);
-        }
-        
-        while(y<gems.length&&x<gems.length) {
-        	gem = gems[y];
-        	
-        	if(!gemBox.containsKey(gem)) 
-        		gemBox.put(gem, 0);
-        	
-        	gemBox.put(gem, gemBox.get(gem)+1);
-        	
-        	if(gemBox.keySet().size() == gemType.size()) {
-        		
-        		if(answer[0] == -1 || answer[1]-answer[0]>y - x) {
-        			answer[0] = x;
-        			answer[1] = y;
-        			
-        			if(y-x+1 == gemType.size())
-        				break;
-        		}
-        		
-        		update(gemBox, gems[x]);
-    			x++;
-        	}
-        	else {
-        		
-        		if(gems[x].equals(gems[y])&&y!=0) {
-            		update(gemBox, gems[x]);
-            		x++;
-            	}
-        		
-        		y++;
-        		
-        	}
-        }
-        
-        return answer;
-	}
-	
-	public static void update(Map<String,Integer> gemBox, String gem) {
-		gemBox.put(gem, gemBox.get(gem)-1);
+		int[] answer = {1, gems.length};
+		int start=0, num;
+		String gem;
+		Set<String> types = new HashSet<String>();
+		Map<String, Integer> gemNum = new HashMap<String, Integer>();
+		Queue<String> que = new LinkedList<String>();
 		
-		if(gemBox.get(gem)==0)
-			gemBox.remove(gem);
+		for(int i=0; i<gems.length; i++) {
+			types.add(gems[i]);
+		}
+		
+		for(int i=0; i<gems.length; i++) {
+			gem = gems[i];
+			if(!gemNum.containsKey(gem))
+				gemNum.put(gem,0);
+			gemNum.put(gem, gemNum.get(gem)+1);
+			
+			que.add(gem);
+			
+			while(true) {
+				gem = que.peek();
+				num = gemNum.get(gem);
+				if(num>1) {
+					gemNum.put(gem, num-1);
+					start++;
+					que.poll();
+				}else {
+					break;
+				}
+			}
+			
+			if(gemNum.size() == types.size() && answer[1] - answer[0] > i - start) {
+				answer[0] = start+1;
+				answer[1] = i+1;
+			}
+			
+		}
+
+        return answer;
 	}
+
+	
 	
 	public static void main(String[] args) {
-		System.out.println(Arrays.toString(solution2(new String[] {"DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"})));
-		System.out.println(Arrays.toString(solution2(new String[] {"DIA", "DIA",  "DIA", "RUBY", "RUBY", "EMERALD", "SAPPHIRE", "DIA"})));
-		System.out.println(Arrays.toString(solution2(new String[] {"DIA", "DIA", "RUBY" , "DIA", "RUBY", "RUBY", "EMERALD", "SAPPHIRE"})));
-		System.out.println(Arrays.toString(solution2(new String[] {"DIA", "DIA","RUBY","RUBY", "EMERALD"})));
+		System.out.println(Arrays.toString(solution(new String[] {"DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"})));
+		System.out.println(Arrays.toString(solution(new String[] {"AA", "AB", "AC", "AA", "AC"})));
+		System.out.println(Arrays.toString(solution(new String[] {"XYZ", "XYZ", "XYZ"})));
+		System.out.println(Arrays.toString(solution(new String[] {"ZZZ", "YYY", "NNNN", "YYY", "BBB"})));
 	}
 
 }
